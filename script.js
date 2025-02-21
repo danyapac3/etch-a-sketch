@@ -27,15 +27,15 @@ function paintCell(cell) {
   }
 }
 
-gridContainer.addEventListener('mousedown', (e) => {
+document.addEventListener('mousedown', (e) => {
   if (e.button === 0) isMouseDown = true;
   paintCell(e.target);
 });
 
-gridContainer.addEventListener('mouseup', (e) => {
+document.addEventListener('mouseup', (e) => {
   isMouseDown = false;
 });
 
-gridContainer.addEventListener('mouseover', (e) => {
+document.addEventListener('mouseover', (e) => {
   paintCell(e.target);
 });
