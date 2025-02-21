@@ -1,4 +1,4 @@
-const gridContainer = document.querySelector('.grid-container');
+let gridContainer = document.querySelector('.grid-container');
 
 function createElementWithClasses(elementType, ...classes) {
   const element = document.createElement(elementType);
@@ -6,7 +6,7 @@ function createElementWithClasses(elementType, ...classes) {
   return element;
 }
 
-function generateGrid(size = 50) {
+function generateGrid(size = 16) {
   const grid = createElementWithClasses('div', 'grid-container');
   grid.style.setProperty('--cell-size', `calc(100% / ${size})`);
   for (let i = 0; i < size ** 2; i++) {
@@ -16,7 +16,26 @@ function generateGrid(size = 50) {
   return grid;
 }
 
+gridContainer.replaceWith(generateGrid());
+gridContainer = document.querySelector('.grid-container');
 
-const newGridContainer = generateGrid();
-console.log(newGridContainer.childElementCount);
-gridContainer.replaceWith(newGridContainer);
+let isMouseDown = false;
+
+function paintCell(cell) {
+  if (isMouseDown && cell.classList.contains('grid-cell')) {
+    cell.style.backgroundColor = 'black';
+  }
+}
+
+gridContainer.addEventListener('mousedown', (e) => {
+  if (e.button === 0) isMouseDown = true;
+  paintCell(e.target);
+});
+
+gridContainer.addEventListener('mouseup', (e) => {
+  isMouseDown = false;
+});
+
+gridContainer.addEventListener('mouseover', (e) => {
+  paintCell(e.target);
+});
