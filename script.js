@@ -1,5 +1,3 @@
-let gridContainer = document.querySelector('.grid-container');
-
 function createElementWithClasses(elementType, ...classes) {
   const element = document.createElement(elementType);
   element.classList.add(...classes);
@@ -16,16 +14,27 @@ function generateGrid(size = 16) {
   return grid;
 }
 
-gridContainer.replaceWith(generateGrid());
-gridContainer = document.querySelector('.grid-container');
-
-let isMouseDown = false;
-
 function paintCell(cell) {
   if (isMouseDown && cell.classList.contains('grid-cell')) {
     cell.style.backgroundColor = 'black';
   }
 }
+
+function toggleGridVisibility() {
+  let curStyles = gridContainer.style.getPropertyValue('--cell-border');
+  console.log(curStyles);
+  if (curStyles === '') gridContainer.style.setProperty('--cell-border', 'none');
+  else gridContainer.style.removeProperty('--cell-border', '');
+}
+
+let gridContainer = document.querySelector('.grid-container');
+let toggleGridVisibilityButton = document.querySelector('.toggle-grid-visibility');
+let isMouseDown = false;
+
+gridContainer.replaceWith(generateGrid());
+gridContainer = document.querySelector('.grid-container');
+
+toggleGridVisibilityButton.addEventListener('click', toggleGridVisibility);
 
 document.addEventListener('mousedown', (e) => {
   if (e.button === 0) isMouseDown = true;
