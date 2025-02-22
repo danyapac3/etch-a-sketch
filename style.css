@@ -16,6 +16,7 @@ body {
 }
 
 .left-side, .right-side {
+  gap: 16px;
   width: 100%;
   height: var(--grid-size);
   background-color: rgb(208, 205, 208);
@@ -31,6 +32,12 @@ body {
   height: 50px;
   font-size: 25px;
   border: 5px solid rgb(86, 86, 86);
+}
+
+.right-side .color-picker {
+  width: 50px;
+  height: 50px;
+  border: solid 2px gray;
 }
 
 .canvas-container {

@@ -47,17 +47,23 @@ function toggleGrid({currentTarget: button}) {
   }
 }
 
+// Global Constants
+const toggleGridButton = document.querySelector('.toggle-grid');
+const colorPicker = document.querySelector('.color-picker')
 // Global Variables
 let canvasContainer;
-let toggleGridButton = document.querySelector('.toggle-grid');
 let isMouseDown = false;
-let cellColor = ' #bf5a6c';
+let cellColor = colorPicker.value;
 
 // Init canvas
 canvasContainer = initCanvas();
 
 // Event Listeners
 toggleGridButton.addEventListener('click', toggleGrid);
+
+colorPicker.addEventListener('change', ({currentTarget}) => {
+  cellColor = currentTarget.value;
+});
 
 document.addEventListener('mouseup', (e) => {
   isMouseDown = false;
