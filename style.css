@@ -37,7 +37,7 @@ body {
   border: 5px solid rgb(86, 86, 86);
 }
 
-.grid-container {
+.canvas-container {
   --cell-border: 1px solid gray;
   display: flex;
   flex-wrap: wrap;
@@ -48,7 +48,7 @@ body {
   user-select: none;
 }
 
-.grid-cell {
+.canvas-cell {
   width: var(--cell-size);
   height: var(--cell-size);
   flex: 0 0 auto;

@@ -4,35 +4,35 @@ function createElementWithClasses(elementType, ...classes) {
   return element;
 }
 
-function generateGrid(size = 16) {
-  const grid = createElementWithClasses('div', 'grid-container');
-  grid.style.setProperty('--cell-size', `calc(100% / ${size})`);
+function generateCanvas(size = 16) {
+  const canvas = createElementWithClasses('div', 'canvas-container');
+  canvas.style.setProperty('--cell-size', `calc(100% / ${size})`);
   for (let i = 0; i < size ** 2; i++) {
-    const cell = createElementWithClasses('div', 'grid-cell');
-    grid.appendChild(cell);
+    const cell = createElementWithClasses('div', 'canvas-cell');
+    canvas.appendChild(cell);
   }
-  return grid;
+  return canvas;
 }
 
 function paintCell(cell) {
-  if (isMouseDown && cell.classList.contains('grid-cell')) {
+  if (isMouseDown && cell.classList.contains('canvas-cell')) {
     cell.style.backgroundColor = 'black';
   }
 }
 
 function toggleGridVisibility() {
-  let curStyles = gridContainer.style.getPropertyValue('--cell-border');
+  let curStyles = canvasContainer.style.getPropertyValue('--cell-border');
   console.log(curStyles);
-  if (curStyles === '') gridContainer.style.setProperty('--cell-border', 'none');
-  else gridContainer.style.removeProperty('--cell-border', '');
+  if (curStyles === '') canvasContainer.style.setProperty('--cell-border', 'none');
+  else canvasContainer.style.removeProperty('--cell-border', '');
 }
 
-let gridContainer = document.querySelector('.grid-container');
+let canvasContainer = document.querySelector('.canvas-container');
 let toggleGridVisibilityButton = document.querySelector('.toggle-grid-visibility');
 let isMouseDown = false;
 
-gridContainer.replaceWith(generateGrid());
-gridContainer = document.querySelector('.grid-container');
+canvasContainer.replaceWith(generateCanvas());
+canvasContainer = document.querySelector('.canvas-container');
 
 toggleGridVisibilityButton.addEventListener('click', toggleGridVisibility);
 
