@@ -26,7 +26,7 @@ function initCanvas(size = 16) {
     paintCell(e.target);
   });
 
-  oldCanvas.replaceWith(newCanvas)
+  oldCanvas.replaceWith(newCanvas);
   return newCanvas;
 }
 
@@ -36,11 +36,15 @@ function paintCell(cell) {
   }
 }
 
-function toggleGridVisibility() {
-  let curStyles = canvasContainer.style.getPropertyValue('--cell-border');
-  console.log(curStyles);
-  if (curStyles === '') canvasContainer.style.setProperty('--cell-border', 'none');
-  else canvasContainer.style.removeProperty('--cell-border', '');
+function toggleGridVisibility({currentTarget: button}) {
+  let isStyled = Boolean(canvasContainer.style.getPropertyValue('--cell-border'));
+  if (isStyled) {
+    button.textContent = 'Grid: on';
+    canvasContainer.style.removeProperty('--cell-border');
+  } else {
+    button.textContent = 'Grid: off';
+    canvasContainer.style.setProperty('--cell-border', 'none');
+  }
 }
 
 // Global Variables
