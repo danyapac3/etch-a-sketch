@@ -36,7 +36,7 @@ function paintCell(cell) {
   }
 }
 
-function toggleGridVisibility({currentTarget: button}) {
+function toggleGrid({currentTarget: button}) {
   let isStyled = Boolean(canvasContainer.style.getPropertyValue('--cell-border'));
   if (isStyled) {
     button.textContent = 'Grid: on';
@@ -49,7 +49,7 @@ function toggleGridVisibility({currentTarget: button}) {
 
 // Global Variables
 let canvasContainer;
-let toggleGridVisibilityButton = document.querySelector('.toggle-grid-visibility');
+let toggleGridButton = document.querySelector('.toggle-grid');
 let isMouseDown = false;
 let cellColor = ' #bf5a6c';
 
@@ -57,7 +57,7 @@ let cellColor = ' #bf5a6c';
 canvasContainer = initCanvas();
 
 // Event Listeners
-toggleGridVisibilityButton.addEventListener('click', toggleGridVisibility);
+toggleGridButton.addEventListener('click', toggleGrid);
 
 document.addEventListener('mouseup', (e) => {
   isMouseDown = false;
