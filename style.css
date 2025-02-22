@@ -2,10 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
 }
 
 :root {
-  --grid-size: 600px;
+  --canvas-size: 600px;
 }
 
 body {
@@ -13,48 +14,58 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: #ffb627;
 }
 
 .left-side, .right-side {
-  gap: 16px;
+  gap: 32px;
   width: 100%;
-  height: var(--grid-size);
-  background-color: rgb(208, 205, 208);
+  height: var(--canvas-size);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
-  padding: 64px 64px;
+  justify-content: center;
+  padding: 64px 0;
+}
+.color-picker {
+  width: 72px;
+  height: 72px;
+  border: solid 2px rgb(255, 255, 255);
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+  border-radius: 50%;
 }
 
-.right-side button {
-  width: 100%;
-  height: 50px;
-  font-size: 25px;
-  border: 5px solid rgb(86, 86, 86);
+.color-picker::-webkit-color-swatch-wrapper {
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
-.right-side .color-picker {
-  width: 50px;
-  height: 50px;
-  border: solid 2px gray;
+.color-picker::-webkit-color-swatch {
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
+
 
 .canvas-container {
-  --cell-border: 1px solid gray;
   display: flex;
   flex-wrap: wrap;
   flex-shrink: 0;
-  height: var(--grid-size);
-  width: var(--grid-size);
+  height: var(--canvas-size);
+  width: var(--canvas-size);
   border: 2px solid black;
   user-select: none;
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
 }
 
 .canvas-cell {
   width: var(--cell-size);
   height: var(--cell-size);
   flex: 0 0 auto;
-  border: var(--cell-border);
   background-color: #fff;
 }

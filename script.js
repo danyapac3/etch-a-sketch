@@ -14,7 +14,7 @@ function generateCanvas(size) {
   return canvas;
 }
 
-function initCanvas(size = 16) {
+function initCanvas(size = 100) {
   const oldCanvas = document.querySelector('.canvas-container');
   const newCanvas = generateCanvas(size);
 
@@ -36,19 +36,7 @@ function paintCell(cell) {
   }
 }
 
-function toggleGrid({currentTarget: button}) {
-  let isStyled = Boolean(canvasContainer.style.getPropertyValue('--cell-border'));
-  if (isStyled) {
-    button.textContent = 'Grid: on';
-    canvasContainer.style.removeProperty('--cell-border');
-  } else {
-    button.textContent = 'Grid: off';
-    canvasContainer.style.setProperty('--cell-border', 'none');
-  }
-}
-
 // Global Constants
-const toggleGridButton = document.querySelector('.toggle-grid');
 const colorPicker = document.querySelector('.color-picker')
 // Global Variables
 let canvasContainer;
@@ -58,9 +46,8 @@ let cellColor = colorPicker.value;
 // Init canvas
 canvasContainer = initCanvas();
 
-// Event Listeners
-toggleGridButton.addEventListener('click', toggleGrid);
 
+// Event Listeners
 colorPicker.addEventListener('change', ({currentTarget}) => {
   cellColor = currentTarget.value;
 });
