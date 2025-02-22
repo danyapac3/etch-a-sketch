@@ -9,6 +9,25 @@
   --canvas-size: 600px;
 }
 
+button {
+  padding: 20px 50px;
+  border-radius: 999px;
+  border: none;
+  color: #ffffff;
+  font-weight: 700;
+  background-color: rgb(22, 22, 22);
+  transition: all 0.1s;
+}
+
+button:hover {
+  background-color: rgb(86, 68, 41);
+}
+
+button:active {
+  color: rgb(22, 22, 22);
+  background-color: white;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -18,7 +37,7 @@ body {
 }
 
 .left-side, .right-side {
-  gap: 32px;
+  gap: 64px;
   width: 100%;
   height: var(--canvas-size);
   display: flex;
@@ -28,12 +47,9 @@ body {
   padding: 64px 0;
 }
 .color-picker {
-  width: 72px;
-  height: 72px;
-  border: solid 2px rgb(255, 255, 255);
-  -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+  width: 144px;
+  height: 144px;
+  border: solid 5px rgb(255, 255, 255);
   border-radius: 50%;
 }
 
@@ -56,11 +72,8 @@ body {
   flex-shrink: 0;
   height: var(--canvas-size);
   width: var(--canvas-size);
-  border: 2px solid black;
+  border: 2px solid #cd9320;
   user-select: none;
-  -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
 }
 
 .canvas-cell {

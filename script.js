@@ -14,7 +14,7 @@ function generateCanvas(size) {
   return canvas;
 }
 
-function initCanvas(size = 100) {
+function initCanvas(size = 20) {
   const oldCanvas = document.querySelector('.canvas-container');
   const newCanvas = generateCanvas(size);
 
@@ -37,7 +37,8 @@ function paintCell(cell) {
 }
 
 // Global Constants
-const colorPicker = document.querySelector('.color-picker')
+const colorPicker = document.querySelector('.color-picker');
+const changeCanvasSizeBtn = document.querySelector('.change-canvas-size');
 // Global Variables
 let canvasContainer;
 let isMouseDown = false;
@@ -52,6 +53,15 @@ colorPicker.addEventListener('change', ({currentTarget}) => {
   cellColor = currentTarget.value;
 });
 
-document.addEventListener('mouseup', (e) => {
+changeCanvasSizeBtn.addEventListener('click', () => {
+  let size = Number(prompt('Specify canvas size between 1-100'));
+  if (Number.isNaN(size) || size < 1 || size > 100) {
+    alert('You specified invalid size');
+  } else {
+    canvasContainer = initCanvas(size);
+  }
+});
+
+document.addEventListener('mouseup', () => {
   isMouseDown = false;
 });
