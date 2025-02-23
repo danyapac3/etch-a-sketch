@@ -32,17 +32,25 @@ function initCanvas(size = 20) {
 
 function paintCell(cell) {
   if (isMouseDown && cell.classList.contains('canvas-cell')) {
-    cell.style.backgroundColor = cellColor;
+    console.log(canvasMode);
+    if (canvasMode === 'draw') {
+      cell.style.backgroundColor = cellColor;
+    }
+    else if (canvasMode === 'erase') {
+      cell.style.backgroundColor = null;
+    }
   }
 }
 
 // Global Constants
 const colorPicker = document.querySelector('.color-picker');
 const changeCanvasSizeBtn = document.querySelector('.change-canvas-size');
+const selectModeContainer = document.querySelector('.select-mode-container');
 // Global Variables
 let canvasContainer;
 let isMouseDown = false;
 let cellColor = colorPicker.value;
+let canvasMode = 'draw'; // can be 'draw', 'erase' or pick;
 
 // Init canvas
 canvasContainer = initCanvas();
@@ -59,6 +67,13 @@ changeCanvasSizeBtn.addEventListener('click', () => {
     alert('You specified invalid size');
   } else {
     canvasContainer = initCanvas(size);
+  }
+});
+
+selectModeContainer.addEventListener('click', (e) => {
+  const {target} = e;
+  if (target.type === 'radio') {
+    canvasMode = target.value;
   }
 });
 

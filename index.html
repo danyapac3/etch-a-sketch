@@ -11,14 +11,16 @@
     <div class="canvas-container"></div>
     <div class="right-side">
       <input class="color-picker" type="color" value="#000000">
-      <button class="change-canvas-size">Change Size</button>
-      <div class="mode-select-container">
-        <input type="radio" id="paint" name="mode" value="paint" checked>
-        <label for="paint"><img src="images/draw.png" alt=""></label>
-        <input type="radio" id="erase" name="mode" value="erase">
-        <label for="erase"><img src="images/eraser.png" alt=""></label>
-        <input type="radio" id="pick" name="mode" value="pick">
-        <label for="pick"><img src="images/pipette.png" alt=""></label>
+      <div class="control-container">
+        <button class="change-canvas-size">Change Size</button>
+        <div class="select-mode-container">
+          <input type="radio" id="draw" name="mode" value="draw" checked>
+          <label for="draw"><img src="images/draw.png" alt=""></label>
+          <input type="radio" id="erase" name="mode" value="erase">
+          <label for="erase"><img src="images/eraser.png" alt=""></label>
+          <input type="radio" id="pick" name="mode" value="pick">
+          <label for="pick"><img src="images/pipette.png" alt=""></label>
+        </div>
       </div>
     </div>
     <script src="./script.js"></script>

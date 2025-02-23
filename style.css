@@ -67,10 +67,16 @@ input[name="mode"]:checked + label {
   background-color: white;
 }
 
-.mode-select-container {
+.select-mode-container {
   display: flex;
   width: var(--button-width);
   justify-content: space-between;
+}
+
+.control-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 input[name="mode"] {
