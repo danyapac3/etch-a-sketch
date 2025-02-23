@@ -107,11 +107,11 @@ body {
   align-items: center;
   height: 100vh;
   background-color: #ffb627;
+  gap: 64px;
 }
 
 .left-side, .right-side {
   gap: 64px;
-  width: 100%;
   height: var(--canvas-size);
   display: flex;
   flex-direction: column;
