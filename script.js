@@ -45,7 +45,7 @@ function paintCell(cell) {
     if (canvasMode === 'draw') {
       cell.style.backgroundColor = paintColor;
     } else if (canvasMode === 'erase') {
-      cell.style.backgroundColor = null;
+      cell.removeAttribute('style');
     } else if (canvasMode === 'pick') {
       const color = (cell.style.backgroundColor)
         ? rgbToHex(cell.style.backgroundColor)
@@ -60,6 +60,7 @@ function paintCell(cell) {
 const colorPicker = document.querySelector('.color-picker');
 const changeCanvasSizeBtn = document.querySelector('.change-canvas-size');
 const selectModeContainer = document.querySelector('.select-mode-container');
+const eraseCanvasBtn = document.querySelector('.erase-canvas');
 // Global Variables
 let canvasContainer;
 let isMouseDown = false;
@@ -74,6 +75,12 @@ canvasContainer = initCanvas();
 // Event Listeners
 colorPicker.addEventListener('change', ({currentTarget}) => {
   paintColor = currentTarget.value;
+});
+
+eraseCanvasBtn.addEventListener('click', () => {
+  for (const cell of canvasContainer.children) {
+    cell.removeAttribute('style');
+  }
 });
 
 changeCanvasSizeBtn.addEventListener('click', () => {

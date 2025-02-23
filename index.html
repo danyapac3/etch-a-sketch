@@ -7,11 +7,19 @@
   <title>Etch-a-Sketch</title>
 </head>
   <body>
-    <div class="left-side"></div>
+    <div class="left-side">
+      <div class="color-container">
+        <div class="saved-color"></div>
+        <div class="saved-color" style="background-color: red;"></div>
+        <div class="saved-color" style="background-color: green;"></div>
+        <div class="saved-color" style="background-color: blue;"></div>
+      </div>
+    </div>
     <div class="canvas-container"></div>
     <div class="right-side">
       <input class="color-picker" type="color" value="#000000">
       <div class="control-container">
+        <button class="erase-canvas">Erase Canvas</button>
         <button class="change-canvas-size">Change Size</button>
         <div class="select-mode-container">
           <input type="radio" id="draw" name="mode" value="draw" checked>

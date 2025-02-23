@@ -73,6 +73,22 @@ input[name="mode"]:checked + label {
   justify-content: space-between;
 }
 
+.color-container {
+  display: flex;
+  width: var(--button-width);
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.saved-color {
+  height: var(--button-height);
+  width: var(--button-height);
+  border-radius: 50%;
+  border: solid 4px rgb(255, 255, 255);
+  background-color: #000000;
+  margin-bottom: 8px;
+}
+
 .control-container {
   display: flex;
   flex-direction: column;
@@ -100,7 +116,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 64px 0;
 }
 .color-picker {
@@ -122,7 +138,7 @@ body {
   flex-shrink: 0;
   height: var(--canvas-size);
   width: var(--canvas-size);
-  border: 2px solid #cd9320;
+  border: 1px solid #0011ff;
   user-select: none;
 }
 
