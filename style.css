@@ -7,10 +7,14 @@
 
 :root {
   --canvas-size: 600px;
+  --button-width: 180px;
+  --button-height: 56px;
 }
 
 button {
-  padding: 20px 50px;
+  height: var(--button-height);
+  width: var(--button-width);
+  text-align: center;
   border-radius: 999px;
   border: none;
   color: #ffffff;
@@ -26,6 +30,53 @@ button:hover {
 button:active {
   color: rgb(22, 22, 22);
   background-color: white;
+}
+
+input[name="mode"] + label {
+  line-height: var(--button-height);
+  width: var(--button-height);
+  height: var(--button-height);
+  text-align: center;
+  border-radius: 999px;
+  border: none;
+  color: #ffffff;
+  font-weight: 700;
+  background-color: rgb(22, 22, 22);
+  transition: all 0.1s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input[name="mode"] + label img {
+  width: 30px;
+  height: 30px;
+  filter: invert(1);
+}
+
+input[name="mode"]:checked + label img {
+  filter: none;
+}
+
+input[name="mode"] + label:hover {
+  background-color: rgb(86, 68, 41);
+}
+
+input[name="mode"]:checked + label {
+  color: rgb(22, 22, 22);
+  background-color: white;
+}
+
+.mode-select-container {
+  display: flex;
+  width: var(--button-width);
+  justify-content: space-between;
+}
+
+input[name="mode"] {
+  opacity: 0;
+  width: 0;
+  position: fixed;
 }
 
 body {
@@ -53,18 +104,11 @@ body {
   border-radius: 50%;
 }
 
-.color-picker::-webkit-color-swatch-wrapper {
+.color-picker::-webkit-color-swatch-wrapper, .color-picker::-webkit-color-swatch {
   margin: 0;
   padding: 0;
   border: 0;
 }
-
-.color-picker::-webkit-color-swatch {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
 
 .canvas-container {
   display: flex;
