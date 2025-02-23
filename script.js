@@ -1,3 +1,13 @@
+function rgbToHex(str) {
+  return '#' + str
+    .split('')
+    .filter(char => !'rgb( )'.includes(char))
+    .join('')
+    .split(',')
+    .map(num => Number(num).toString(16).padStart(2, '0'))
+    .join('');
+}
+
 function createElementWithClasses(elementType, ...classes) {
   const element = document.createElement(elementType);
   element.classList.add(...classes);
@@ -32,12 +42,16 @@ function initCanvas(size = 20) {
 
 function paintCell(cell) {
   if (isMouseDown && cell.classList.contains('canvas-cell')) {
-    console.log(canvasMode);
     if (canvasMode === 'draw') {
-      cell.style.backgroundColor = cellColor;
-    }
-    else if (canvasMode === 'erase') {
+      cell.style.backgroundColor = paintColor;
+    } else if (canvasMode === 'erase') {
       cell.style.backgroundColor = null;
+    } else if (canvasMode === 'pick') {
+      const color = (cell.style.backgroundColor)
+        ? rgbToHex(cell.style.backgroundColor)
+        : backgroundColor;
+      paintColor = color;
+      colorPicker.value = color;
     }
   }
 }
@@ -49,7 +63,8 @@ const selectModeContainer = document.querySelector('.select-mode-container');
 // Global Variables
 let canvasContainer;
 let isMouseDown = false;
-let cellColor = colorPicker.value;
+let backgroundColor = '#ffffff';
+let paintColor = colorPicker.value;
 let canvasMode = 'draw'; // can be 'draw', 'erase' or pick;
 
 // Init canvas
@@ -58,7 +73,7 @@ canvasContainer = initCanvas();
 
 // Event Listeners
 colorPicker.addEventListener('change', ({currentTarget}) => {
-  cellColor = currentTarget.value;
+  paintColor = currentTarget.value;
 });
 
 changeCanvasSizeBtn.addEventListener('click', () => {
