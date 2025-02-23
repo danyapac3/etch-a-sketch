@@ -31,6 +31,7 @@ function initCanvas(size = 20) {
   newCanvas.addEventListener('mousedown', (e) => {
     if (e.button === 0) isMouseDown = true;
     paintCell(e.target);
+    saveColor(paintColor);
   });
   newCanvas.addEventListener('mouseover', (e) => {
     paintCell(e.target);
@@ -50,17 +51,43 @@ function paintCell(cell) {
       const color = (cell.style.backgroundColor)
         ? rgbToHex(cell.style.backgroundColor)
         : backgroundColor;
-      paintColor = color;
-      colorPicker.value = color;
+      setColor(color);
     }
   }
 }
+
+function setColor(color) {
+  paintColor = color;
+  colorPicker.value = color;
+}
+
+function saveColor(color) {
+  const savedColors = [];
+  for (const colorElement of colorContainer.querySelectorAll('.saved-color')) {
+    savedColors.push(colorElement.dataset.color);
+  }
+  if (!savedColors.includes(color)) {
+    const newColorElement = document.createElement('div');
+    newColorElement.dataset.color = color;
+    newColorElement.style.backgroundColor = color;
+    newColorElement.classList.add('saved-color');
+    newColorElement.addEventListener('click', () => {
+      setColor(color);
+    });
+
+    colorContainer.appendChild(newColorElement);
+    console.log(savedColors.length);
+    if (savedColors.length >= 17) colorContainer.firstChild.remove();
+  }
+}
+
 
 // Global Constants
 const colorPicker = document.querySelector('.color-picker');
 const changeCanvasSizeBtn = document.querySelector('.change-canvas-size');
 const selectModeContainer = document.querySelector('.select-mode-container');
 const eraseCanvasBtn = document.querySelector('.erase-canvas');
+const colorContainer = document.querySelector('.color-container');
 // Global Variables
 let canvasContainer;
 let isMouseDown = false;

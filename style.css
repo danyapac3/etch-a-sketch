@@ -77,7 +77,8 @@ input[name="mode"]:checked + label {
   display: flex;
   width: var(--button-width);
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 6px;
 }
 
 .saved-color {
@@ -86,7 +87,6 @@ input[name="mode"]:checked + label {
   border-radius: 50%;
   border: solid 4px rgb(255, 255, 255);
   background-color: #000000;
-  margin-bottom: 8px;
 }
 
 .control-container {
