@@ -112,7 +112,7 @@ eraseCanvasBtn.addEventListener('click', () => {
 
 changeCanvasSizeBtn.addEventListener('click', () => {
   let size = Number(prompt('Specify canvas size between 1-100'));
-  if (Number.isNaN(size) || size < 1 || size > 100) {
+  if (Number.isNaN(size) || size < 1 || size > 100 || !Number.isInteger(size)) {
     alert('You specified invalid size');
   } else {
     canvasContainer = initCanvas(size);
